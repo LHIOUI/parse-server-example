@@ -25,6 +25,7 @@ var api = new ParseServer({
 
 
 var dashboard = new ParseDashboard({
+  "allowInsecureHTTP": true,
   "apps": [
     {
       "serverURL": process.env.SERVER_URL || 'http://localhost:1337/parse',
@@ -32,7 +33,11 @@ var dashboard = new ParseDashboard({
       "masterKey": process.env.MASTER_KEY || '',
       "appName": "Isti3lamat"
     }
-  ]
+  ],
+  "users": [{
+        "user": process.env.PARSE_DASHBOARD_USER || '',
+        "pass": process.env.PARSE_DASHBOARD_PASS || ''
+    }]
 },true);
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
